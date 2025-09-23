@@ -14,6 +14,11 @@ const ProductCard = ({ product }) => {
       alert('Erro ao copiar cupom. Tente copiar manualmente: ' + product.coupon);
     }
   };
+  
+    const formatBRL = (n) =>
+  typeof n === "number"
+    ? n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+    : n;
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -50,10 +55,10 @@ const ProductCard = ({ product }) => {
         {/* Preços */}
         <div className="flex items-center space-x-2 mb-4">
           <span className="text-2xl font-bold text-gray-800">
-            {product.price}
+            {formatBRL(product.price)}
           </span>
           <span className="text-lg text-gray-500 line-through">
-            {product.originalPrice}
+            {formatBRL(product.originalPrice)}
           </span>
         </div>
 

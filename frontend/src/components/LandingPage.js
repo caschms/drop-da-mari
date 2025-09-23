@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Hero from './Hero';
 import Products from './Products';
+import ProductsSection from './ProductsSection';
 import Footer from './Footer';
 
 const LandingPage = () => {
@@ -10,6 +11,7 @@ const LandingPage = () => {
       <Header />
       <Hero />
       <Products />
+      <ProductsSection />
       <Footer />
     </div>
   );

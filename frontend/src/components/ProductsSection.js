@@ -1,55 +1,72 @@
-import React, { useState } from "react";
-import { mockProducts, categories } from "../data/mockProducts";
+import React, { useMemo, useState } from "react";
+import products from "../products";
 import ProductCard from "./ProductCard";
 
-const ProductsSection = () => {
-  const [activeCategory, setActiveCategory] = useState("todos");
+// util simples para contar por categoria
+function buildCategories(list) {
+  const map = new Map();
+  for (const p of list) {
+    const cat = (p.category || "Outros").trim();
+    map.set(cat, (map.get(cat) || 0) + 1);
+  }
+  // ordena por nome
+  const items = Array.from(map.entries())
+    .map(([name, count]) => ({ id: name, name, count }))
+    .sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
+  // inclui "Todos" no início
+  return [{ id: "Todos", name: "Todos", count: list.length }, ...items];
+}
 
-  const filteredProducts = activeCategory === "todos" 
-    ? mockProducts 
-    : mockProducts.filter(product => product.category === activeCategory);
+const ProductsSection = () => {
+  const [active, setActive] = useState("Todos");
+
+  const categories = useMemo(() => buildCategories(products), []);
+  const filtered = useMemo(() => {
+    if (active === "Todos") return products;
+    return products.filter((p) => (p.category || "").trim() === active);
+  }, [active]);
 
   return (
-    <section id="produtos" className="py-16 bg-gray-50">
+    <section id="products" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-bold text-gray-800 mb-3">
             Produtos Selecionados
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Cada produto foi cuidadosamente testado e aprovado. 
-            Escolha a categoria e encontre o que você precisa!
+          <p className="text-gray-600 text-lg">
+            Cada produto foi cuidadosamente testado e aprovado
           </p>
         </div>
 
-        {/* Filtros de Categoria */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
+        {/* Filtros */}
+        <div className="flex flex-wrap gap-3 justify-center mb-10">
+          {categories.map((c) => (
             <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                activeCategory === category.id
-                  ? "bg-gradient-to-r from-pink-400 to-pink-500 text-white shadow-lg"
-                  : "bg-white text-gray-600 hover:bg-pink-50 hover:text-pink-500 border border-gray-200"
-              }`}
+              key={c.id}
+              onClick={() => setActive(c.id)}
+              className={[
+                "px-4 py-2 rounded-full border text-sm font-medium transition",
+                active === c.id
+                  ? "bg-pink-500 text-white border-pink-500"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-pink-300"
+              ].join(" ")}
+              aria-pressed={active === c.id}
             >
-              {category.name}
-              <span className="ml-2 text-xs opacity-75">({category.count})</span>
+              {c.name} {c.id !== "Todos" ? `(${c.count})` : ""}
             </button>
           ))}
         </div>
 
-        {/* Grid de Produtos */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => (
+          {filtered.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        {/* Mensagem se não há produtos */}
-        {filteredProducts.length === 0 && (
+        {/* Vazio */}
+        {filtered.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">
               Nenhum produto encontrado nesta categoria.
