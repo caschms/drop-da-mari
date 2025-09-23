@@ -63,7 +63,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://maribgomes.github.io/drop-da-mari",
+  "homepage": ".",
   "browserslist": {
     "production": [
       ">0.2%",
