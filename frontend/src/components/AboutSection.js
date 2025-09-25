@@ -26,12 +26,12 @@ const AboutSection = () => {
             <div className="text-center md:text-left">
               <div className="relative inline-block mb-6">
                 <img
-                  src="https://images.unsplash.com/photo-1494790108755-2616b6ca1799?w=300&h=300&fit=crop&crop=face"
+
+                  src="https://res.cloudinary.com/dupz0ffvs/image/upload/v1758832450/About_Mariana_oruxqw.jpg"
                   alt="Mariana Bragança - Fundadora do Drop da Mari"
-                  className="w-48 h-48 rounded-full object-cover mx-auto md:mx-0 shadow-xl border-4 border-pink-100"
+                  className="w-48 h-48 rounded-full shadow-lg object-cover select-none"
                 />
-                <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-gradient-to-br from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-lg">
-                  <Heart size={20} className="text-white" />
+                <div className="absolute inset-0 rounded-full" style={{ backgroundColor: "rgba(0,0,0,0)" }}>
                 </div>
               </div>
 

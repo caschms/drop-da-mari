@@ -84,3 +84,16 @@ code {
     @apply bg-background text-foreground;
     }
 }
+/* 🔒 Proteções contra cópia de imagem e seleção */
+img {
+  pointer-events: none;   /* bloqueia clique e arrasto */
+  -webkit-user-drag: none; /* bloqueia arrasto em navegadores baseados em WebKit */
+}
+
+* {
+  -webkit-touch-callout: none; /* desabilita clique longo em mobile */
+  -webkit-user-select: none;   /* desabilita seleção */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
