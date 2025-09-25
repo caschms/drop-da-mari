@@ -2,22 +2,19 @@ import React, { useMemo, useState } from "react";
 import products from "../products";
 import ProductCard from "./ProductCard";
 
-// util simples para contar por categoria
 function buildCategories(list) {
   const map = new Map();
   for (const p of list) {
     const cat = (p.category || "Outros").trim();
     map.set(cat, (map.get(cat) || 0) + 1);
   }
-  // ordena por nome
   const items = Array.from(map.entries())
     .map(([name, count]) => ({ id: name, name, count }))
     .sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
-  // inclui "Todos" no início
   return [{ id: "Todos", name: "Todos", count: list.length }, ...items];
 }
 
-const ProductsSection = () => {
+export default function ProductsSection() {
   const [active, setActive] = useState("Todos");
 
   const categories = useMemo(() => buildCategories(products), []);
@@ -44,12 +41,13 @@ const ProductsSection = () => {
           {categories.map((c) => (
             <button
               key={c.id}
+              type="button"
               onClick={() => setActive(c.id)}
               className={[
                 "px-4 py-2 rounded-full border text-sm font-medium transition",
                 active === c.id
                   ? "bg-pink-500 text-white border-pink-500"
-                  : "bg-white text-gray-700 border-gray-200 hover:border-pink-300"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-pink-300",
               ].join(" ")}
               aria-pressed={active === c.id}
             >
@@ -65,7 +63,7 @@ const ProductsSection = () => {
           ))}
         </div>
 
-        {/* Vazio */}
+        {/* Estado vazio */}
         {filtered.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">
@@ -76,6 +74,4 @@ const ProductsSection = () => {
       </div>
     </section>
   );
-};
-
-export default ProductsSection;
+}

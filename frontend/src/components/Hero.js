@@ -7,6 +7,12 @@ const Hero = () => {
     });
   };
 
+  const scrollToAbout = () => {
+    document.getElementById('sobre').scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <section className="bg-gradient-to-br from-pink-50 to-white py-20">
       <div className="max-w-4xl mx-auto text-center px-4">
@@ -18,12 +24,23 @@ const Hero = () => {
           Produtos cuidadosamente selecionados para turbinar seus treinos 
           e potencializar seus resultados. Todos com cupons exclusivos!
         </p>
-        <button
-          onClick={scrollToProducts}
-          className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
-        >
-          Ver Produtos
-        </button>
+
+        {/* Botões no estilo About */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            onClick={scrollToProducts}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-medium shadow transition"
+          >
+            Ver Produtos
+          </button>
+
+          <button
+            onClick={scrollToAbout}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-medium shadow transition"
+          >
+            Sobre Mim
+          </button>
+        </div>
       </div>
     </section>
   );
