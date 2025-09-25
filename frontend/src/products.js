@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    title: "Whey Protein Isolado",
+    name: "Whey Protein Isolado",
     description: "Proteína de alta qualidade para recuperação muscular pós-treino",
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop",
     price: 127.42,
@@ -13,7 +13,7 @@ const products = [
   },
   {
     id: 2,
-    title: "Legging de Compressão",
+    name: "Legging de Compressão",
     description: "Legging premium para treinos intensos e corridas longas",
     image: "https://images.unsplash.com/photo-1506629905607-96331b86c171?w=400&h=400&fit=crop",
     price: 179.91,
@@ -25,7 +25,7 @@ const products = [
   },
   {
     id: 3,
-    title: "Garrafa Térmica 500ml",
+    name: "Garrafa Térmica 500ml",
     description: "Mantém a temperatura por até 12 horas. Ideal para treinos",
     image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop",
     price: 85.41,
@@ -37,7 +37,7 @@ const products = [
   },
   {
     id: 4,
-    title: "Shampoo Fortalecedor",
+    name: "Shampoo Fortalecedor",
     description: "Fortalece e dá brilho aos cabelos. Ideal pós-treino",
     image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
     price: 47.92,
@@ -49,7 +49,7 @@ const products = [
   },
   {
     id: 5,
-    title: "Protetor Solar FPS 70",
+    name: "Protetor Solar FPS 70",
     description: "Proteção máxima para atividades ao ar livre e corridas",
     image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
     price: 67.92,
@@ -61,7 +61,7 @@ const products = [
   },
   {
     id: 6,
-    title: "Creatina Monohidratada",
+    name: "Creatina Monohidratada",
     description: "Aumenta força e performance nos treinos. Resultados comprovados",
     image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5e?w=400&h=400&fit=crop",
     price: 114.31,

@@ -30,7 +30,7 @@ export default function ProductCard({ product }) {
       <div className="relative">
         <img
           src={product.image}
-          alt={product.title}
+          alt={product.name}
           className="w-full h-64 object-cover"
           loading="lazy"
           decoding="async"
@@ -58,7 +58,7 @@ export default function ProductCard({ product }) {
 
         {/* Título */}
         <h3 className="text-xl font-bold text-gray-800 mb-3">
-          {product.title}
+          {product.name}
         </h3>
 
         {/* Descrição */}
