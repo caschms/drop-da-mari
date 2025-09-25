@@ -43,7 +43,7 @@ const products = [
     id: 5,
     name: "Protetor Solar Kesser All Protect",
     description: "Pra manter a pele impecável, protegida e radiante!",
-    image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837484/JFR_4739_226818fa-14cc-48f6-93dc-6ed5f9b2af53_cxch6f.webp",
+    image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758843838/JFR_4729_scyvck.webp",
     discount: "10% OFF",
     coupon: "MARIANABRAGANCA",
     affiliateLink: "https://kesserstore.com.br/products/dupla-all-protect",
