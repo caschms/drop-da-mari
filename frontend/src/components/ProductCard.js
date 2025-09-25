@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, activeProductId, setActiveProductId }) {
+  const [copied, setCopied] = useState(false);
+
   const handleBuyClick = () => {
-    // Abre o link de afiliado em nova aba
+    // Se tiver cupom e não for o ativo, bloqueia
+    if (product.coupon && activeProductId !== product.id) {
+      alert("⚠️ Copie o cupom deste produto antes de comprar!");
+      return;
+    }
     window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
   };
 
   const handleCopyCoupon = async () => {
     try {
       await navigator.clipboard.writeText(product.coupon);
-      alert(
-        `Cupom ${product.coupon} copiado! Cole no checkout para aplicar o desconto.`
-      );
+      setCopied(true);
+      setActiveProductId(product.id); // define este como único ativo
+      setTimeout(() => setCopied(false), 5000);
     } catch (err) {
-      alert(
-        "Erro ao copiar cupom. Tente copiar manualmente: " + product.coupon
-      );
+      console.error("Erro ao copiar cupom:", err);
     }
   };
 
@@ -23,6 +27,8 @@ export default function ProductCard({ product }) {
     typeof n === "number"
       ? n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
       : n;
+
+  const isActive = activeProductId === product.id;
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -39,7 +45,6 @@ export default function ProductCard({ product }) {
               "https://via.placeholder.com/640x400?text=Produto";
           }}
         />
-        {/* Badge de Desconto */}
         {product.discount && (
           <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
             {product.discount}
@@ -49,26 +54,20 @@ export default function ProductCard({ product }) {
 
       {/* Conteúdo */}
       <div className="p-6">
-        {/* Categoria */}
         {product.category && (
           <div className="text-pink-500 text-sm font-medium mb-2">
             {product.category}
           </div>
         )}
 
-        {/* Título */}
-        <h3 className="text-xl font-bold text-gray-800 mb-3">
-          {product.name}
-        </h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-3">{product.name}</h3>
 
-        {/* Descrição */}
         {product.description && (
           <p className="text-gray-600 text-sm mb-4 leading-relaxed">
             {product.description}
           </p>
         )}
 
-        {/* Preços */}
         <div className="flex items-center space-x-2 mb-4">
           {product.price && (
             <span className="text-2xl font-bold text-gray-800">
@@ -99,7 +98,7 @@ export default function ProductCard({ product }) {
                 onClick={handleCopyCoupon}
                 className="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded text-sm font-medium transition-colors"
               >
-                Copiar
+                {copied ? "Copiado!" : "Copiar"}
               </button>
             </div>
           </div>
@@ -107,19 +106,19 @@ export default function ProductCard({ product }) {
           <div className="text-sm text-gray-500 mb-4">Oferta sem cupom</div>
         )}
 
-        {/* Botão de Compra */}
+        {/* Comprar */}
         <button
           type="button"
           onClick={handleBuyClick}
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          disabled={!!product.coupon && !isActive} 
+          className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg ${
+            product.coupon && !isActive
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : "bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
+          }`}
         >
           Comprar com Desconto
         </button>
-
-        {/* Aviso */}
-        <p className="text-xs text-gray-500 text-center mt-3">
-          Link com cupom já aplicado • Sem custo adicional
-        </p>
       </div>
     </div>
   );

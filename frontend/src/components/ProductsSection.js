@@ -1,20 +1,21 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import products from "../products";
 import ProductCard from "./ProductCard";
 
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeProductId, setActiveProductId] = useState(null); // 🔑 controle global
 
   // Normaliza: minúsculas, remove acentos, remove invisíveis, normaliza espaços
   const normalize = (str) =>
     (str ?? "")
       .toLowerCase()
-      .normalize("NFD")                    // separa acentos
-      .replace(/[\u0300-\u036f]/g, "")     // remove acentos
-      .replace(/[\u200B-\u200D\uFEFF]/g, "") // remove zero-width (ZWSP, ZWNJ, ZWJ, BOM)
-      .replace(/\u00A0/g, " ")             // NBSP -> espaço comum
-      .replace(/\s+/g, " ")                // colapsa múltiplos espaços
+      .normalize("NFD") // separa acentos
+      .replace(/[\u0300-\u036f]/g, "") // remove acentos
+      .replace(/[\u200B-\u200D\uFEFF]/g, "") // remove zero-width
+      .replace(/\u00A0/g, " ") // NBSP -> espaço comum
+      .replace(/\s+/g, " ") // colapsa múltiplos espaços
       .trim();
 
   // Garante array
@@ -39,12 +40,15 @@ const ProductsSection = () => {
   // 2) Filtro por busca (normalizado)
   const query = normalize(searchTerm);
   const finalFiltered = byCategory.filter((p) => {
-    if (!query) return true; // sem busca -> tudo
-    const searchable = normalize(
-      `${p?.name || ""} ${p?.description || ""}`
-    );
+    if (!query) return true;
+    const searchable = normalize(`${p?.name || ""} ${p?.description || ""}`);
     return searchable.includes(query);
   });
+
+  // 🔄 Resetar activeProductId quando categoria ou busca mudar
+  useEffect(() => {
+    setActiveProductId(null);
+  }, [selectedCategory, searchTerm]);
 
   return (
     <section id="products" className="py-16 bg-white">
@@ -86,7 +90,12 @@ const ProductsSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {finalFiltered.length > 0 ? (
             finalFiltered.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                activeProductId={activeProductId}
+                setActiveProductId={setActiveProductId}
+              />
             ))
           ) : (
             <p className="col-span-full text-center text-gray-500">
