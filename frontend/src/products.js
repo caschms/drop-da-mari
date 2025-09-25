@@ -6,7 +6,7 @@ const products = [
     image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837040/Whey_Protein_jwxanq.webp",
     discount: "10% OFF",
     coupon: "TRUEMARI",
-    affiliateLink: "https://www.truesource.com.br/collections/whey-protein",
+    affiliateLink: "https://www.truesource.com.br/products/true-whey-protein-macadamia-ice-cream-837-g",
     category: "Suplementos"
   },
   {
