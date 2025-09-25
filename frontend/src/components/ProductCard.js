@@ -23,11 +23,6 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
     }
   };
 
-  const formatBRL = (n) =>
-    typeof n === "number"
-      ? n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
-      : n;
-
   const isActive = activeProductId === product.id;
 
   return (
@@ -68,19 +63,6 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
           </p>
         )}
 
-        <div className="flex items-center space-x-2 mb-4">
-          {product.price && (
-            <span className="text-2xl font-bold text-gray-800">
-              {formatBRL(product.price)}
-            </span>
-          )}
-          {product.originalPrice && (
-            <span className="text-lg text-gray-500 line-through">
-              {formatBRL(product.originalPrice)}
-            </span>
-          )}
-        </div>
-
         {/* Cupom */}
         {product.coupon ? (
           <div className="bg-pink-50 border border-pink-200 rounded-lg p-3 mb-4">
@@ -110,7 +92,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
         <button
           type="button"
           onClick={handleBuyClick}
-          disabled={!!product.coupon && !isActive} 
+          disabled={!!product.coupon && !isActive}
           className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg ${
             product.coupon && !isActive
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
