@@ -7,7 +7,7 @@ A landing page está construída em React com componentes organizados para fáci
 ## 📦 Onde Editar Cada Coisa
 
 ### 🛍️ **PRODUTOS** (Principal)
-**Arquivo**: `/app/frontend/src/data/mockProducts.js`
+**Arquivo**: `/app/frontend/src/products.js`
 
 ```javascript
 {
@@ -78,7 +78,7 @@ await new Promise(resolve => setTimeout(resolve, 1000));
 ### Imagens de Produtos:
 1. Suba sua imagem para um serviço (Imgur, Cloudinary, etc)
 2. Copie a URL
-3. Cole no campo `image` do produto em `mockProducts.js`
+3. Cole no campo `image` do produto em `products.js`
 
 ### Foto da Mari:
 1. Suba sua foto
@@ -96,7 +96,7 @@ await new Promise(resolve => setTimeout(resolve, 1000));
 - Substitua pelo seu e-mail real
 
 ### Links de Afiliado:
-- Em `mockProducts.js` no campo `affiliateUrl`
+- Em `products.js` no campo `affiliateUrl`
 - Formato: `https://loja.com/produto?coupon=CODIGO&utm_source=drop-da-mari&utm_medium=affiliate&utm_campaign=cupom`
 
 ## ⚡ Funcionalidades Implementadas
