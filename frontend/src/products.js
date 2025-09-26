@@ -4,7 +4,7 @@ const products = [
     name: "True Whey Protein",
     description: "Leve, limpo, natural e delicioso!",
     image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837040/Whey_Protein_jwxanq.webp",
-    discount: "10% OFF",
+    discount: "20% OFF",
     coupon: "TRUEMARI",
     affiliateLink: "https://www.truesource.com.br/products/true-whey-protein-macadamia-ice-cream-837-g",
     category: "Suplementos"
@@ -34,7 +34,7 @@ const products = [
     name: "Kit Super Nutri Ervas Naturais",
     description: "A solução completa para restaurar a saúde dos cabelos!",
     image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758838034/kit_super_nutri_321_1_ccbf423cac484e35dcb6543ac48e0ed7_tijfu4.webp",
-    discount: "20% OFF",
+    discount: "10% OFF",
     coupon: "MARI",
     affiliateLink: "https://www.ervasnaturais.com.br/kits/kit-super-nutri",
     category: "Cosméticos"
@@ -54,7 +54,7 @@ const products = [
     name: "Pré-treino True Energyzer",
     description: "Energia extra na performance e desempenho!",
     image: "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837010/ENERGYZER-FRUIT-PUNCH_rnabgk.webp",
-    discount: "10% OFF",
+    discount: "20% OFF",
     coupon: "TRUEMARI",
     affiliateLink: "https://www.truesource.com.br/products/true-energyzer-focus-fruit-punch-360g-true-source",
     category: "Suplementos"
