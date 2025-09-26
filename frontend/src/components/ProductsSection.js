@@ -6,6 +6,7 @@ const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [activeProductId, setActiveProductId] = useState(null); // 🔑 controle global
+  const [shuffledProducts, setShuffledProducts] = useState([]); // lista fixa embaralhada
 
   // Normaliza: minúsculas, remove acentos, remove invisíveis, normaliza espaços
   const normalize = (str) =>
@@ -18,34 +19,33 @@ const ProductsSection = () => {
       .replace(/\s+/g, " ") // colapsa múltiplos espaços
       .trim();
 
-  // Função para embaralhar array
-const shuffleArray = (array) => {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-};
+  // 🔀 Embaralhar apenas uma vez ao carregar
+  useEffect(() => {
+    if (Array.isArray(products)) {
+      const arr = [...products];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      setShuffledProducts(arr);
+    }
+  }, []);
 
-  // Garante array + embaralha
-  const list = Array.isArray(products) ? shuffleArray(products) : [];
-    
   // Categorias + contagem
   const { categories, counts } = useMemo(() => {
     const countsMap = {};
-    for (const p of list) {
+    for (const p of shuffledProducts) {
       const cat = p?.category || "Outros";
       countsMap[cat] = (countsMap[cat] || 0) + 1;
     }
     return { categories: ["Todos", ...Object.keys(countsMap)], counts: countsMap };
-  }, [list]);
+  }, [shuffledProducts]);
 
   // 1) Filtro por categoria
   const byCategory =
     selectedCategory === "Todos"
-      ? list
-      : list.filter((p) => (p?.category || "Outros") === selectedCategory);
+      ? shuffledProducts
+      : shuffledProducts.filter((p) => (p?.category || "Outros") === selectedCategory);
 
   // 2) Filtro por busca (normalizado)
   const query = normalize(searchTerm);
@@ -91,7 +91,7 @@ const shuffleArray = (array) => {
               }`}
             >
               {cat}{" "}
-              {cat === "Todos" ? `(${list.length})` : `(${counts[cat] || 0})`}
+              {cat === "Todos" ? `(${shuffledProducts.length})` : `(${counts[cat] || 0})`}
             </button>
           ))}
         </div>

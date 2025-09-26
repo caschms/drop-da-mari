@@ -2,13 +2,12 @@ import React, { useState } from "react";
 
 export default function ProductCard({ product, activeProductId, setActiveProductId }) {
   const [copied, setCopied] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+
+  const isActive = activeProductId === product.id;
+  const isDisabled = !!product.coupon && !isActive;
 
   const handleBuyClick = () => {
-    // Se tiver cupom e não for o ativo, bloqueia
-    if (product.coupon && activeProductId !== product.id) {
-      alert("⚠️ Copie o cupom deste produto antes de comprar!");
-      return;
-    }
     window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
   };
 
@@ -16,14 +15,38 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
     try {
       await navigator.clipboard.writeText(product.coupon);
       setCopied(true);
-      setActiveProductId(product.id); // define este como único ativo
+      setActiveProductId(product.id);
       setTimeout(() => setCopied(false), 5000);
     } catch (err) {
       console.error("Erro ao copiar cupom:", err);
     }
   };
 
-  const isActive = activeProductId === product.id;
+  const guideToCopy = () => {
+    const couponButton = document.getElementById(`coupon-${product.id}`);
+    if (couponButton) {
+      couponButton.scrollIntoView({ behavior: "smooth", block: "center" });
+      couponButton.classList.add("shake");
+      setTimeout(() => couponButton.classList.remove("shake"), 500);
+    }
+
+    // Mobile feedback
+    const isTouch =
+      (window.matchMedia && window.matchMedia("(hover: none)").matches) ||
+      (navigator.maxTouchPoints > 0);
+
+    if (isTouch) {
+      setShowHint(true);
+      if (navigator.vibrate) navigator.vibrate(30);
+      setTimeout(() => setShowHint(false), 2000);
+    }
+  };
+
+  const handleBuyHover = () => {
+    if (isDisabled) {
+      guideToCopy();
+    }
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
@@ -65,7 +88,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
 
         {/* Cupom */}
         {product.coupon ? (
-          <div className="bg-pink-50 border border-pink-200 rounded-lg p-3 mb-4">
+          <div className="bg-pink-50 border border-pink-200 rounded-lg p-3 mb-3">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-pink-600 font-medium">
@@ -76,6 +99,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
                 </p>
               </div>
               <button
+                id={`coupon-${product.id}`}
                 type="button"
                 onClick={handleCopyCoupon}
                 className="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded text-sm font-medium transition-colors"
@@ -83,24 +107,39 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
                 {copied ? "Copiado!" : "Copiar"}
               </button>
             </div>
+
+            {/* Dica inline (mobile) */}
+            {showHint && (
+              <div className="mt-2 text-xs text-pink-700 bg-pink-100/70 rounded px-2 py-1">
+                Toque em <strong>Copiar</strong> para liberar o botão de compra.
+              </div>
+            )}
           </div>
         ) : (
           <div className="text-sm text-gray-500 mb-4">Oferta sem cupom</div>
         )}
 
         {/* Comprar */}
-        <button
-          type="button"
-          onClick={handleBuyClick}
-          disabled={!!product.coupon && !isActive}
-          className={`w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg ${
-            product.coupon && !isActive
-              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
-          }`}
-        >
-          Comprar com Desconto
-        </button>
+        {isDisabled ? (
+          <button
+            type="button"
+            aria-disabled="true"
+            onClick={guideToCopy}
+            onMouseEnter={handleBuyHover}
+            className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-gray-300 text-gray-500 cursor-not-allowed"
+            title="Copie o cupom para liberar"
+          >
+            Comprar com Desconto
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleBuyClick}
+            className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
+          >
+            Comprar com Desconto
+          </button>
+        )}
       </div>
     </div>
   );
