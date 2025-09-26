@@ -18,9 +18,19 @@ const ProductsSection = () => {
       .replace(/\s+/g, " ") // colapsa múltiplos espaços
       .trim();
 
-  // Garante array
-  const list = Array.isArray(products) ? products : [];
+  // Função para embaralhar array
+const shuffleArray = (array) => {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
 
+  // Garante array + embaralha
+  const list = Array.isArray(products) ? shuffleArray(products) : [];
+    
   // Categorias + contagem
   const { categories, counts } = useMemo(() => {
     const countsMap = {};
