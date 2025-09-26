@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,10 +25,48 @@ const Footer = () => {
           <div className="text-gray-400 text-sm">
             © {currentYear} Drop da Mari. Todos os direitos reservados.
           </div>
-          
-          <div className="text-gray-400 text-sm">
-            Feito com ❤️ para você
+
+          <div className="text-gray-400 text-sm">Feito com ❤️ para você</div>
+        </div>
+
+        {/* Selos de Segurança */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
+          {/* SSL */}
+          <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <span role="img" aria-label="cadeado" className="text-green-400">
+              🔒
+            </span>
+            <span>Conexão segura com certificado SSL</span>
           </div>
+
+          {/* Google Safe Browsing */}
+          <a
+            href="https://transparencyreport.google.com/safe-browsing/search?url=dropdamari.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-400 text-sm hover:text-pink-400 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 text-red-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 11c0-1.657-1.343-3-3-3S6 9.343 6 11s1.343 3 3 3 3-1.343 3-3z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10 21h4a1 1 0 001-1v-4H9v4a1 1 0 001 1z"
+              />
+            </svg>
+            <span>Verificação Google Safe Browsing</span>
+          </a>
         </div>
 
         {/* Disclaimer de Afiliados */}
