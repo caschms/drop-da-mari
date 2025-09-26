@@ -108,12 +108,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
               </button>
             </div>
 
-            {/* Dica inline (mobile) */}
-            {showHint && (
-              <div className="mt-2 text-xs text-pink-700 bg-pink-100/70 rounded px-2 py-1">
-                Toque em <strong>Copiar</strong> para liberar o botão de compra.
-              </div>
-            )}
+            {/* (Removida a mensagem temporária no mobile; mantém apenas o tooltip do botão de compra) */}
           </div>
         ) : (
           <div className="text-sm text-gray-500 mb-4">Oferta sem cupom</div>

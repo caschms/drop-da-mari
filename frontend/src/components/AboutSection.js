@@ -68,19 +68,21 @@ const AboutSection = () => {
             <div>
               <div className="prose prose-lg">
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Olá! Eu sou a Mari, e minha paixão por fitness e bem-estar me
-                  levou a criar este espaço especial. Depois de anos testando
-                  produtos, descobrindo marcas incríveis e vivenciando na pele
-                  o que realmente funciona, decidi compartilhar tudo isso com
-                  vocês.
+                  Oi, eu sou a Mari! Minha paixão pela rotina saudável e 
+                  bem-estar me inspirou a criar este espaço.
+                  Depois de experimentar diferentes produtos e conhecer 
+                  marcas incríveis, decidi reunir em um só lugar o que 
+                  realmente vale a pena.
                 </p>
 
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Cada produto aqui foi cuidadosamente selecionado e testado por
-                  mim. Não indico nada que eu mesma não usaria ou não
-                  recomendaria para uma amiga. Meu objetivo é facilitar sua
-                  jornada fitness, oferecendo sempre as melhores opções com
-                  descontos exclusivos.
+                  Cada item que você encontra por aqui foi testado e 
+                  escolhido com cuidado. Não indico nada que eu mesma 
+                  não usaria ou não recomendaria para uma amiga, pode 
+                  ficar tranquila!
+                  Meu propósito é tornar sua jornada fitness mais leve 
+                  e prática, sempre trazendo opções de qualidade e 
+                  vantagens exclusivas para você.
                 </p>
               </div>
             </div>
