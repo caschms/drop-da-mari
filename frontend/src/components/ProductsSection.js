@@ -7,9 +7,8 @@ const ProductsSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeProductId, setActiveProductId] = useState(null);
   const [shuffledProducts, setShuffledProducts] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(8); // 🔢 mostra 8 produtos
 
-  // Normaliza texto
+  // Normalização
   const normalize = (str) =>
     (str ?? "")
       .toLowerCase()
@@ -20,7 +19,7 @@ const ProductsSection = () => {
       .replace(/\s+/g, " ")
       .trim();
 
-  // 🔀 Embaralha só uma vez
+  // 🔀 Embaralha apenas 1x
   useEffect(() => {
     if (Array.isArray(products)) {
       const arr = [...products];
@@ -42,13 +41,12 @@ const ProductsSection = () => {
     return { categories: ["Todos", ...Object.keys(countsMap)], counts: countsMap };
   }, [shuffledProducts]);
 
-  // 1) Filtro por categoria
+  // Filtros
   const byCategory =
     selectedCategory === "Todos"
       ? shuffledProducts
       : shuffledProducts.filter((p) => (p?.category || "Outros") === selectedCategory);
 
-  // 2) Filtro por busca
   const query = normalize(searchTerm);
   const finalFiltered = byCategory.filter((p) => {
     if (!query) return true;
@@ -56,13 +54,10 @@ const ProductsSection = () => {
     return searchable.includes(query);
   });
 
-  // 🔄 Resetar cupom ativo ao trocar filtros
+  // Resetar activeProductId quando busca/categoria muda
   useEffect(() => {
     setActiveProductId(null);
   }, [selectedCategory, searchTerm]);
-
-  // Produtos visíveis (pagina por 8)
-  const visibleProducts = finalFiltered.slice(0, visibleCount);
 
   return (
     <section id="products" className="py-16 bg-white">
@@ -95,15 +90,17 @@ const ProductsSection = () => {
               }`}
             >
               {cat}{" "}
-              {cat === "Todos" ? `(${shuffledProducts.length})` : `(${counts[cat] || 0})`}
+              {cat === "Todos"
+                ? `(${shuffledProducts.length})`
+                : `(${counts[cat] || 0})`}
             </button>
           ))}
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {visibleProducts.length > 0 ? (
-            visibleProducts.map((product) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {finalFiltered.length > 0 ? (
+            finalFiltered.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -117,18 +114,6 @@ const ProductsSection = () => {
             </p>
           )}
         </div>
-
-        {/* Botão "Mais produtos" */}
-        {visibleCount < finalFiltered.length && (
-          <div className="mt-10 text-center">
-            <button
-              onClick={() => setVisibleCount((prev) => prev + 8)}
-              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg shadow-md transition-all"
-            >
-              Mais produtos
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
