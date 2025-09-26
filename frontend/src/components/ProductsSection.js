@@ -5,21 +5,22 @@ import ProductCard from "./ProductCard";
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeProductId, setActiveProductId] = useState(null); // 🔑 controle global
-  const [shuffledProducts, setShuffledProducts] = useState([]); // lista fixa embaralhada
+  const [activeProductId, setActiveProductId] = useState(null);
+  const [shuffledProducts, setShuffledProducts] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(8); // 🔢 mostra 8 produtos
 
-  // Normaliza: minúsculas, remove acentos, remove invisíveis, normaliza espaços
+  // Normaliza texto
   const normalize = (str) =>
     (str ?? "")
       .toLowerCase()
-      .normalize("NFD") // separa acentos
-      .replace(/[\u0300-\u036f]/g, "") // remove acentos
-      .replace(/[\u200B-\u200D\uFEFF]/g, "") // remove zero-width
-      .replace(/\u00A0/g, " ") // NBSP -> espaço comum
-      .replace(/\s+/g, " ") // colapsa múltiplos espaços
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\u200B-\u200D\uFEFF]/g, "")
+      .replace(/\u00A0/g, " ")
+      .replace(/\s+/g, " ")
       .trim();
 
-  // 🔀 Embaralhar apenas uma vez ao carregar
+  // 🔀 Embaralha só uma vez
   useEffect(() => {
     if (Array.isArray(products)) {
       const arr = [...products];
@@ -47,7 +48,7 @@ const ProductsSection = () => {
       ? shuffledProducts
       : shuffledProducts.filter((p) => (p?.category || "Outros") === selectedCategory);
 
-  // 2) Filtro por busca (normalizado)
+  // 2) Filtro por busca
   const query = normalize(searchTerm);
   const finalFiltered = byCategory.filter((p) => {
     if (!query) return true;
@@ -55,10 +56,13 @@ const ProductsSection = () => {
     return searchable.includes(query);
   });
 
-  // 🔄 Resetar activeProductId quando categoria ou busca mudar
+  // 🔄 Resetar cupom ativo ao trocar filtros
   useEffect(() => {
     setActiveProductId(null);
   }, [selectedCategory, searchTerm]);
+
+  // Produtos visíveis (pagina por 8)
+  const visibleProducts = finalFiltered.slice(0, visibleCount);
 
   return (
     <section id="products" className="py-16 bg-white">
@@ -67,7 +71,7 @@ const ProductsSection = () => {
           Produtos em Destaque
         </h2>
 
-        {/* Busca digitável */}
+        {/* Busca */}
         <div className="mb-6 max-w-md mx-auto">
           <input
             type="text"
@@ -78,7 +82,7 @@ const ProductsSection = () => {
           />
         </div>
 
-        {/* Filtros por categoria */}
+        {/* Filtros */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((cat) => (
             <button
@@ -96,10 +100,10 @@ const ProductsSection = () => {
           ))}
         </div>
 
-        {/* Grid de produtos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {finalFiltered.length > 0 ? (
-            finalFiltered.map((product) => (
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {visibleProducts.length > 0 ? (
+            visibleProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -113,6 +117,18 @@ const ProductsSection = () => {
             </p>
           )}
         </div>
+
+        {/* Botão "Mais produtos" */}
+        {visibleCount < finalFiltered.length && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 8)}
+              className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-lg shadow-md transition-all"
+            >
+              Mais produtos
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
