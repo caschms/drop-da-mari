@@ -26,18 +26,13 @@ const normalize = (str) =>
 // Mapeia categorias do dataset para as categorias canônicas desejadas
 const canonicalizeCategory = (raw) => {
   const n = normalize(raw);
-  // aliases (singular/plural/sem acento)
   if (n === "roupa" || n === "roupas") return "Roupas";
-  if (n === "acessorio" || n === "acessorios" || n === "acessório" || n === "acessórios") return "Acessórios";
+  if (["acessorio", "acessorios", "acessório", "acessórios"].includes(n)) return "Acessórios";
   if (n === "suplemento" || n === "suplementos") return "Suplementos";
   if (n === "cabelo" || n === "cabelos") return "Cabelos";
   if (n === "pele") return "Pele";
   if (n === "outro" || n === "outros") return "Outros";
-
-  // Se já vier igual a alguma categoria desejada, mantém
   if (DESIRED_ORDER.includes(raw)) return raw;
-
-  // Qualquer outra cai em "Outros"
   return "Outros";
 };
 
@@ -87,7 +82,7 @@ const ProductsSection = () => {
   const countsByCat = useMemo(() => {
     const counts = {
       Roupas: 0,
-      "Acessórios": 0,
+      Acessórios: 0,
       Suplementos: 0,
       Cabelos: 0,
       Pele: 0,
@@ -105,12 +100,14 @@ const ProductsSection = () => {
 
   return (
     <section id="products" className="py-12 px-4 md:px-8 lg:px-16">
-    <h2
-      className="text-2xl font-bold text-center mb-6"
-     style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
-    >
+      {/* Título levemente maior */}
+      <h2
+        className="text-3xl font-bold text-center mb-6"
+        style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
+      >
         Produtos
-    </h2>
+      </h2>
+
       {/* Busca */}
       <div className="flex justify-center mb-4">
         <input
@@ -132,12 +129,16 @@ const ProductsSection = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full border transition-colors ${
                 selected ? "bg-pink-500 text-white" : "bg-white text-gray-700"
-              }`}
+              } text-sm md:text-base`}
             >
               {/* Tudo branco quando selecionado */}
               <span className={selected ? "text-white" : ""}>{cat}</span>
               {cat !== "Todos" && (
-                <span className={`ml-1 text-sm ${selected ? "text-white" : "text-gray-500"}`}>
+                <span
+                  className={`ml-1 ${
+                    selected ? "text-white" : "text-gray-500"
+                  } text-xs md:text-sm`}
+                >
                   ({countsByCat[cat] ?? 0})
                 </span>
               )}
