@@ -6,7 +6,6 @@ import Footer from './Footer';
 import FloatingContactButton from "./FloatingContactButton";
 import AboutSection from './AboutSection';
 
-
 const LandingPage = () => (
   <div className="min-h-screen bg-gray-50">
     <Header />
