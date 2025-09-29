@@ -18,6 +18,7 @@ const AboutSection = () => {
       alt: "Mariana Bragança - Fundadora do Drop da Mari",
       showInfo: true,
       reverse: false, // texto à direita (ordem normal)
+      textAlign: "text-right", // alinhado à direita
       text: (
         <>
           <p className="text-gray-600 mb-6 leading-relaxed">
@@ -35,11 +36,11 @@ const AboutSection = () => {
     {
       // SLIDE 2 — imagem à DIREITA, maior e sem nome/subtítulo/botões
       image:
-        // ✅ Suavização sem crop/zoom (apenas ajuste de qualidade e redução de ruído)
         "https://res.cloudinary.com/dupz0ffvs/image/upload/f_auto,q_auto:best,cs_srgb,dpr_auto,c_fit,w_768,e_noise_reduction:40,e_auto_color,e_auto_contrast/v1759172143/IMG_0182.JPEG_fvcnzd.jpg",
       alt: "Mariana Bragança correndo",
       showInfo: false,
-      reverse: true, // inverte: texto à esquerda, imagem à direita
+      reverse: true, // texto à esquerda
+      textAlign: "text-left",
       text: (
         <>
           <p className="text-gray-600 mb-6 leading-relaxed">
@@ -65,7 +66,7 @@ const AboutSection = () => {
           <div className="text-center mb-12">
             <h2
               className="text-4xl font-bold text-gray-800 mb-4"
-              style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
+              style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
             >
               Sobre a Mari
             </h2>
@@ -93,7 +94,7 @@ const AboutSection = () => {
                 <>
                   <h3
                     className="text-2xl font-bold text-gray-800 mb-2"
-                    style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
+                    style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
                   >
                     Mariana Bragança
                   </h3>
@@ -127,9 +128,9 @@ const AboutSection = () => {
 
             {/* QUADRADO DO TEXTO */}
             <div
-              className={`prose prose-lg ${
-                slide.reverse ? "md:order-1" : "md:order-2"
-              }`}
+              className={`${slide.reverse ? "md:order-1" : "md:order-2"} ${
+                slide.textAlign
+              } prose prose-lg`}
             >
               {slide.text}
             </div>
@@ -137,7 +138,7 @@ const AboutSection = () => {
         </div>
       </div>
 
-      {/* Navegação (botão pequeno de deslizar) */}
+      {/* Navegação (botões laterais, centralizados) */}
       {current > 0 && (
         <button
           onClick={() => setCurrent(current - 1)}
