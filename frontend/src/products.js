@@ -41,7 +41,7 @@ const products = [
   },
   {
     "id": "prod-5",
-    "name": "Boné Esportivo 5 Panel",
+    "name": "Boné Esportivo Yopp 5 Panel",
     "description": "Tecido leve e respirável com proteção UV50.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758915343/bone_esportivo_5_painel_rosa_jatuya.webp",
     "affiliateLink": "https://www.yopp.com.br/loja/busca.php?loja=878826&palavra_busca=bone+panel",
@@ -91,7 +91,7 @@ const products = [
   },
   {
     "id": "prod-10",
-    "name": "Cinta Porta Numeral e Gel",
+    "name": "Cinta Porta Numeral e Gel Yopp",
     "description": "Acessório indispensável para qualquer corredor.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758915343/cinta_porta_numeral_e_gel_btyjjq.webp",
     "affiliateLink": "https://www.yopp.com.br/yopp/acessorios/cinta-porta-numeral-e-gel-corpreto",
@@ -458,6 +458,15 @@ const products = [
     "category": "Roupas",
     "discount": "10% OFF",
     "coupon": "MARI"
+  },
+  {
+    "id": "prod-47",
+    "name": "Gel de limpeza facial Kesser All Clean",
+    "description": "",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759169761/Gel_de_Limpeza_Facial_All_Clean_pw2t0l.webp",
+    "affiliateLink": "https://kesserstore.com.br/products/gel-de-limpeza-facial-all-clean",
+    "category": "Pele",
+    "coupon": "MARIBRAGANCA"
   }
 ];
 

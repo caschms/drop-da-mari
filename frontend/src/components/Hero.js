@@ -2,26 +2,28 @@ import React from 'react';
 
 const Hero = () => {
   const scrollToProducts = () => {
-    document.getElementById('products').scrollIntoView({ 
-      behavior: 'smooth' 
-    });
+    const el = document.getElementById('products');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToAbout = () => {
-    document.getElementById('sobre').scrollIntoView({
-      behavior: 'smooth'
-    });
+    const el = document.getElementById('sobre');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section className="bg-gradient-to-br from-pink-50 to-white py-20">
       <div className="max-w-4xl mx-auto text-center px-4">
-        <h2 className="text-5xl font-bold text-gray-800 mb-6">
+        <h2
+          className="text-3xl md:text-4xl font-bold tracking-tight leading-tight text-gray-800 mb-6"
+          style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
+        >
           Os melhores produtos{' '}
           <span className="text-pink-500">fitness</span> com desconto
         </h2>
+
         <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-          Produtos cuidadosamente selecionados para turbinar seus treinos 
+          Produtos cuidadosamente selecionados para turbinar seus treinos
           e potencializar seus resultados. Todos com cupons exclusivos!
         </p>
 

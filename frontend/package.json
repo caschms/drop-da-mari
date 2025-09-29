@@ -56,16 +56,14 @@
     "vaul": "^1.1.2",
     "zod": "^3.24.4"
   },
-  "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build:products": "node scripts/xlsx-to-products.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
+"scripts": {
+  "start": "craco start",
+  "build": "craco build",
+  "test": "craco test",
+  "build:products": "node scripts/xlsx-to-products.js",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},
   "browserslist": {
     "production": [
       ">0.2%",

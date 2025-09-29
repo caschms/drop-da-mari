@@ -35,7 +35,8 @@ const AboutSection = () => {
     {
       // SLIDE 2 — imagem à DIREITA, maior e sem nome/subtítulo/botões
       image:
-        "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758832450/About_Mari_Run.jpg",
+        // ✅ Suavização sem crop/zoom (apenas ajuste de qualidade e redução de ruído)
+        "https://res.cloudinary.com/dupz0ffvs/image/upload/f_auto,q_auto:best,cs_srgb,dpr_auto,c_fit,w_768,e_noise_reduction:40,e_auto_color,e_auto_contrast/v1759172143/IMG_0182.JPEG_fvcnzd.jpg",
       alt: "Mariana Bragança correndo",
       showInfo: false,
       reverse: true, // inverte: texto à esquerda, imagem à direita
@@ -62,7 +63,12 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Sobre a Mari</h2>
+            <h2
+              className="text-4xl font-bold text-gray-800 mb-4"
+              style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
+            >
+              Sobre a Mari
+            </h2>
           </div>
 
           {/* Dois “quadrados”: imagem (sempre centralizada) + texto */}
@@ -79,15 +85,21 @@ const AboutSection = () => {
                 className={`rounded-full shadow-lg object-cover select-none mb-6 ${
                   slide.showInfo ? "w-48 h-48" : "w-64 h-64"
                 }`}
+                loading="lazy"
+                decoding="async"
               />
 
               {slide.showInfo && (
                 <>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h3
+                    className="text-2xl font-bold text-gray-800 mb-2"
+                    style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
+                  >
                     Mariana Bragança
                   </h3>
+
                   <p className="text-pink-500 font-medium mb-4">
-                    Apaixonada por fitness & bem-estar
+                    Apaixonada por corrida & bem-estar
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-4">

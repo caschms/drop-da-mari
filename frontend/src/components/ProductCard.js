@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function ProductCard({ product, activeProductId, setActiveProductId }) {
   const [copied, setCopied] = useState(false);
-  const [showHint, setShowHint] = useState(false);
 
   const isActive = activeProductId === product.id;
   const isDisabled = !!product.coupon && !isActive;
@@ -29,27 +28,18 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
       couponButton.classList.add("shake");
       setTimeout(() => couponButton.classList.remove("shake"), 500);
     }
-
-    // Feedback mobile
     const isTouch =
       (window.matchMedia && window.matchMedia("(hover: none)").matches) ||
       (navigator.maxTouchPoints > 0);
-
-    if (isTouch) {
-      setShowHint(true);
-      if (navigator.vibrate) navigator.vibrate(30);
-      setTimeout(() => setShowHint(false), 2000);
-    }
+    if (isTouch && navigator.vibrate) navigator.vibrate(30);
   };
 
   const handleBuyHover = () => {
-    if (isDisabled) {
-      guideToCopy();
-    }
+    if (isDisabled) guideToCopy();
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
       {/* Imagem */}
       <div className="relative">
         <img
@@ -59,8 +49,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
           loading="lazy"
           decoding="async"
           onError={(e) => {
-            e.currentTarget.src =
-              "https://via.placeholder.com/640x400?text=Produto";
+            e.currentTarget.src = "https://via.placeholder.com/640x400?text=Produto";
           }}
         />
         {product.discount && (
@@ -71,7 +60,7 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
       </div>
 
       {/* Conteúdo */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col h-full">
         {product.category && (
           <div className="text-pink-500 text-sm font-medium mb-2">
             {product.category}
@@ -81,66 +70,69 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
         <h3 className="text-xl font-bold text-gray-800 mb-3">{product.name}</h3>
 
         {product.description && (
-          <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-            {product.description}
-          </p>
+          <p className="text-gray-600 text-sm mb-4 leading-relaxed">{product.description}</p>
         )}
 
-        {/* Cupom */}
-        {product.coupon ? (
-          <div className="bg-pink-50 border border-pink-200 rounded-lg p-3 mb-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs text-pink-600 font-medium">
-                  CUPOM EXCLUSIVO
-                </p>
-                <p className="text-lg font-bold text-pink-700">
-                  {product.coupon}
-                </p>
+        {/* Base fixa do card */}
+        <div className="mt-auto space-y-3">
+          {/* Cupom */}
+          {product.coupon ? (
+            <div className="bg-pink-50 border border-pink-200 rounded-lg p-3">
+              {/* min-w-0 permite truncar dentro do flex; gap evita encostar no botão */}
+              <div className="flex items-center justify-between min-w-0 gap-3">
+                {/* Esquerda: rótulo + cupom truncado */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-pink-600 font-medium">CUPOM EXCLUSIVO</p>
+                  <p
+                    className="text-lg font-bold text-pink-700 truncate"
+                    title={product.coupon}
+                    aria-label={`Cupom ${product.coupon}`}
+                  >
+                    {product.coupon}
+                  </p>
+                </div>
+
+                {/* Direita: Copiar (não encolhe) */}
+                <button
+                  id={`coupon-${product.id}`}
+                  type="button"
+                  onClick={handleCopyCoupon}
+                  className="shrink-0 bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded text-sm font-medium transition-colors"
+                >
+                  {copied ? "Copiado!" : "Copiar"}
+                </button>
               </div>
-              <button
-                id={`coupon-${product.id}`}
-                type="button"
-                onClick={handleCopyCoupon}
-                className="bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded text-sm font-medium transition-colors"
-              >
-                {copied ? "Copiado!" : "Copiar"}
-              </button>
             </div>
+          ) : (
+            <div className="text-sm text-gray-500">Oferta sem cupom</div>
+          )}
 
-            {/* (Removida a mensagem temporária no mobile; mantém apenas o tooltip do botão de compra) */}
-          </div>
-        ) : (
-          <div className="text-sm text-gray-500 mb-4">Oferta sem cupom</div>
-        )}
-
-        {/* Comprar */}
-        {isDisabled ? (
-          <div className="relative group">
+          {/* Comprar */}
+          {isDisabled ? (
+            <div className="relative group">
+              <button
+                type="button"
+                aria-disabled="true"
+                onClick={guideToCopy}
+                onMouseEnter={handleBuyHover}
+                className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-gray-300 text-gray-500 cursor-pointer"
+              >
+                Comprar com Desconto
+              </button>
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-pink-600 text-white text-xs font-medium px-2 py-1 rounded shadow-lg whitespace-nowrap">
+                Copie o cupom!
+              </span>
+            </div>
+          ) : (
             <button
               type="button"
-              aria-disabled="true"
-              onClick={guideToCopy}
-              onMouseEnter={handleBuyHover}
-              className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-gray-300 text-gray-500 cursor-pointer"
+              onClick={handleBuyClick}
+              className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
             >
               Comprar com Desconto
             </button>
-
-            {/* Tooltip no hover (desktop) */}
-            <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-pink-600 text-white text-xs font-medium px-2 py-1 rounded shadow-lg whitespace-nowrap">
-              Copie o cupom!
-            </span>
-          </div>
-        ) : (
-          <button
-            type="button"
-            onClick={handleBuyClick}
-            className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
-          >
-            Comprar com Desconto
-          </button>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
