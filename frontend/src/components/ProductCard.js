@@ -7,8 +7,15 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
   const isDisabled = !!product.coupon && !isActive;
 
   const handleBuyClick = () => {
-    window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
-  };
+  if (window.gtag) {
+    window.gtag("event", "click_comprar", {
+      event_category: "E-commerce",
+      event_label: product.name,   // ou product.id se preferir
+      value: product.price || 0,   // opcional: envia preço se tiver
+    });
+  }
+  window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
+};
 
   const handleCopyCoupon = async () => {
     try {
