@@ -216,7 +216,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/produtos/tops/top-betina-drop?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-23",
@@ -226,7 +226,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-betina-drop-preto?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-24",
@@ -236,7 +236,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-arpoador-multi-bolsos?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-25",
@@ -246,7 +246,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-ipanema-com-bolso?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-26",
@@ -256,7 +256,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/top-ipanema?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-27",
@@ -266,7 +266,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-mari-run-drop?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-28",
@@ -276,7 +276,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-mari-run-drop-purpura?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-29",
@@ -286,7 +286,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-tai-drop?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-30",
@@ -296,7 +296,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-betina-madder-brown?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-31",
@@ -306,7 +306,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-venice?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-32",
@@ -316,7 +316,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-venice?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-33",
@@ -326,7 +326,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-flow-e-short-move-chocolate?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-34",
@@ -336,7 +336,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-e-short-flow-azul-vortex?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-35",
@@ -346,7 +346,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/conjuntos/macaquinho-lari-carmel?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-36",
@@ -356,7 +356,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-napa-preto?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-37",
@@ -366,7 +366,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/produtos/conjuntos/macaquinho-camila?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-38",
@@ -376,7 +376,7 @@ const products = [
     "affiliateLink": "https://www.ahvic.com.br/colecao-sprint-drop-ii/top-flow-drop-branco?parceiro=5913",
     "category": "Roupas",
     "discount": "15% OFF",
-    "coupon": "MARI"
+    "coupon": "MARI15"
   },
   {
     "id": "prod-39",
