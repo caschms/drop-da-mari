@@ -177,7 +177,7 @@ const AboutSection = () => {
 
               {/* Texto (sem prose, com espaçamento controlado) */}
               <div className={`${slide.reverse ? "md:order-1" : "md:order-2"} ${slide.textAlign}`}>
-                <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
+                <div className="space-y-4 text-gray-600 text-base leading-relaxed">
                   {slide.text}
                 </div>
               </div>
