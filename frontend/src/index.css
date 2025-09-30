@@ -1,6 +1,5 @@
 /* ================================================================== */
-/*  Fontes da marca — Mallory (default antigo)                        */
-/*  Hoje substituído por Poppins, mas mantido caso precise.           */
+/*  Fontes da marca — Mallory (fallback antigo)                       */
 /* ================================================================== */
 @font-face {
   font-family: "Mallory";
@@ -12,32 +11,9 @@
   font-style: normal;
   font-display: swap;
 }
-/* Arquivos da Mallory (opcional, comentado)
-@font-face {
-  font-family: "Mallory";
-  src: url("./assets/fonts/Mallory-Regular.woff2") format("woff2"),
-       url("./assets/fonts/Mallory-Regular.woff") format("woff"),
-       url("./assets/fonts/Mallory-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Mallory";
-  src: url("./assets/fonts/Mallory-Bold.woff2") format("woff2"),
-       url("./assets/fonts/Mallory-Bold.woff") format("woff"),
-       url("./assets/fonts/Mallory-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-*/
 
 /* ================================================================== */
 /*  Fontes da marca — Sinerva (títulos principais)                     */
-/*  Arquivos:                                                          */
-/*    - src/assets/fonts/Sinerva.otf                                   */
-/*    - src/assets/fonts/Sinerva.ttf                                   */
 /* ================================================================== */
 @font-face {
   font-family: "Sinerva";
@@ -51,7 +27,6 @@
 
 /* ================================================================== */
 /*  Fontes — Poppins (textos gerais, nomes de produtos, etc.)          */
-/*  Pasta: src/assets/fonts/Poppins/                                   */
 /* ================================================================== */
 @font-face {
   font-family: "Poppins";
@@ -79,25 +54,9 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins/Poppins-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Poppins";
   src: url("./assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins/Poppins-MediumItalic.ttf") format("truetype");
-  font-weight: 500;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -114,14 +73,6 @@
   src: url("./assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins/Poppins-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -165,7 +116,6 @@
 /* ---------- Reset e fontes ---------- */
 body {
   margin: 0;
-  /* Poppins como fonte padrão do site */
   font-family: "Poppins", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -177,47 +127,58 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 0 0% 11%; /* #2d2d2d */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 0 0% 11%;
+
+    --primary: 320 65% 60%;  /* rosa forte base */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 15 70% 55%; /* laranja queimado */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 28 75% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 11%;
+
     --radius: 0.5rem;
+
+    /* Tons ajustados */
+    --primary-baby: 320 80% 88%;  /* rosa bebê reforçado */
+    --accent-baby:  28 90% 86%;   /* pêssego bebê reforçado */
+    --offwhite:     48 40% 96%;   /* offwhite */
   }
 
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 11%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 0 0% 11%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 0 0% 11%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    --primary-foreground: 0 0% 11%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 15%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 83%;
   }
 }
 
@@ -233,7 +194,6 @@ img {
   pointer-events: none;
   -webkit-user-drag: none;
 }
-
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -250,7 +210,23 @@ img {
   75% { transform: translateX(-4px); }
   100% { transform: translateX(0); }
 }
+.shake { animation: shake 0.4s; }
 
-.shake {
-  animation: shake 0.4s;
+/* ---------- Bridges para transições ---------- */
+@layer utilities {
+  .section-bridge { position: relative; z-index: 0; }
+  .section-bridge::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 64px;
+    background-image: linear-gradient(
+      to bottom,
+      var(--this-bg, transparent) 0%,
+      var(--next-bg, transparent) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bridge-content { position: relative; z-index: 1; }
 }

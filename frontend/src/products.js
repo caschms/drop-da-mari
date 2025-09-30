@@ -201,6 +201,185 @@ const products = [
   },
   {
     "id": "prod-21",
+    "name": "Gel de limpeza facial Kesser All Clean",
+    "description": "",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759169761/Gel_de_Limpeza_Facial_All_Clean_pw2t0l.webp",
+    "affiliateLink": "https://kesserstore.com.br/products/gel-de-limpeza-facial-all-clean",
+    "category": "Pele",
+    "coupon": "MARIBRAGANCA"
+  },
+  {
+    "id": "prod-22",
+    "name": "Top Ahvic Betina (cores)",
+    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925663/Top_Betina_drop_zfm3st.png",
+    "affiliateLink": "https://www.ahvic.com.br/produtos/tops/top-betina-drop?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-23",
+    "name": "Top Ahvic Betina",
+    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925702/Top_Betina_preto_rhpnlt.png",
+    "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-betina-drop-preto?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-24",
+    "name": "Short Ahvic Arpoador",
+    "description": "Edição inspirada nas cores da Maratona do Rio.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921398/Short_Arpoador_fduhqx.png",
+    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-arpoador-multi-bolsos?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-25",
+    "name": "Short Ahvic Ipanema",
+    "description": "Edição inspirada nas cores da Maratona do Rio.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921397/Short_Ipanema_bhg1pv.png",
+    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-ipanema-com-bolso?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-26",
+    "name": "Top Ahvic Ipanema",
+    "description": "Edição inspirada nas cores da Maratona do Rio.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921396/Top_Ipanema_zr9uyr.png",
+    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/top-ipanema?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-27",
+    "name": "Short Ahvic Mari (cores)",
+    "description": "Para quem busca performance nos treinos de corrida.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925734/Short_Mari_Run_mfvmra.png",
+    "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-mari-run-drop?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-28",
+    "name": "Short Ahvic Mari",
+    "description": "Para quem busca performance nos treinos de corrida.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925752/Short_Mari_P%C3%BArpura_nolkgc.png",
+    "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-mari-run-drop-purpura?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-29",
+    "name": "Short Ahvic Tai",
+    "description": "Perfeita para quem busca liberdade, conforto e estilo.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925772/Short_Tai_drop_nm5r2d.png",
+    "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-tai-drop?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-30",
+    "name": "Conjunto Ahvic Betina",
+    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758924673/Conjunto_Betina_Madder_Brown_r4qv9t.png",
+    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-betina-madder-brown?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-31",
+    "name": "Short Ahvic Venice",
+    "description": "Conforto e praticidade para as atividades físicas.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925234/Short_Venice_jxa7hs.png",
+    "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-venice?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-32",
+    "name": "Top Ahvic Venice",
+    "description": "Conforto e praticidade para as atividades físicas.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925515/Top_Venice_voc0c2.png",
+    "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-venice?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-33",
+    "name": "Conjunto Ahvic Flow e Move",
+    "description": "Para acompanhar você em cada passo.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925233/Top_Flow_Short_Move_chocolate_f1wffx.png",
+    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-flow-e-short-move-chocolate?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-34",
+    "name": "Conjunto Ahvic Flow",
+    "description": "Para acompanhar você em cada passo.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925233/Conjunto_Flow_zoo0ef.png",
+    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-e-short-flow-azul-vortex?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-35",
+    "name": "Macaquinho Ahvic Lari",
+    "description": "A peça ideal para os seus treinos.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926277/Macaquinho_Lari_Run_Carmel_sua4m6.png",
+    "affiliateLink": "https://www.ahvic.com.br/conjuntos/macaquinho-lari-carmel?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-36",
+    "name": "Conjunto Ahvic Napa",
+    "description": "Equilíbrio perfeito entre sustentação e conforto.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926370/Conjunto_Napa_preto_bmhfdl.png",
+    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-napa-preto?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-37",
+    "name": "Macaquinho Ahvic Camila",
+    "description": "Sofisticação com conforto ao seu treino.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926436/Macaquinho_Camila_qsy3ls.png",
+    "affiliateLink": "https://www.ahvic.com.br/produtos/conjuntos/macaquinho-camila?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-38",
+    "name": "Top Ahvic Flow",
+    "description": "Para acompanhar você em cada passo.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926514/Top_Flow_branco_ca7qvt.png",
+    "affiliateLink": "https://www.ahvic.com.br/colecao-sprint-drop-ii/top-flow-drop-branco?parceiro=5913",
+    "category": "Roupas",
+    "discount": "15% OFF",
+    "coupon": "MARI"
+  },
+  {
+    "id": "prod-39",
     "name": "True Whey Protein",
     "description": "Leve, limpo, natural e delicioso!",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837040/Whey_Protein_jwxanq.webp",
@@ -210,7 +389,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-22",
+    "id": "prod-40",
     "name": "Pré-treino True Energyzer",
     "description": "Energia extra na performance!",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758837010/ENERGYZER-FRUIT-PUNCH_rnabgk.webp",
@@ -220,7 +399,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-23",
+    "id": "prod-41",
     "name": "True Curcuma",
     "description": "Todos os benefícios ativos da cúrcuma.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918087/curcuma_jxegmo.webp",
@@ -230,7 +409,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-24",
+    "id": "prod-42",
     "name": "True Nac",
     "description": "Excelente antioxidante.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918086/true_nac_o6z17e.webp",
@@ -240,7 +419,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-25",
+    "id": "prod-43",
     "name": "True Omega 3",
     "description": "Nutriente essencial para a saúde.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918086/omega3_pvvdmo.webp",
@@ -250,7 +429,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-26",
+    "id": "prod-44",
     "name": "Gel Intra-treino Sport line True",
     "description": "Pra impulsionar a energia e desempenho!",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918087/gel_intra_pd1jfc.webp",
@@ -260,7 +439,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-27",
+    "id": "prod-45",
     "name": "True Creatina Creapure",
     "description": "Pra auxiliar no aumento da força e rendimento.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918444/creatinatrue_bbali7.webp",
@@ -270,7 +449,7 @@ const products = [
     "coupon": "TRUEMARI"
   },
   {
-    "id": "prod-28",
+    "id": "prod-46",
     "name": "Gummies Guday",
     "description": "Suplemento com sabor de sobremesa.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758918291/guday_zgpur8.webp",
@@ -280,7 +459,7 @@ const products = [
     "coupon": "MARIBRAGANCA"
   },
   {
-    "id": "prod-29",
+    "id": "prod-47",
     "name": "Repositor de Eletrólitos Liquidz",
     "description": "Tecnologia de hidratação funcional.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758928181/prod_melancia_1_xy4hvo.webp",
@@ -288,185 +467,6 @@ const products = [
     "category": "Suplementos",
     "discount": "10% OFF",
     "coupon": "MARIANABRAGANCA"
-  },
-  {
-    "id": "prod-30",
-    "name": "Top Ahvic Betina (cores)",
-    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925663/Top_Betina_drop_zfm3st.png",
-    "affiliateLink": "https://www.ahvic.com.br/produtos/tops/top-betina-drop?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-31",
-    "name": "Top Ahvic Betina",
-    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925702/Top_Betina_preto_rhpnlt.png",
-    "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-betina-drop-preto?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-32",
-    "name": "Short Ahvic Arpoador",
-    "description": "Edição inspirada nas cores da Maratona do Rio.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921398/Short_Arpoador_fduhqx.png",
-    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-arpoador-multi-bolsos?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-33",
-    "name": "Short Ahvic Ipanema",
-    "description": "Edição inspirada nas cores da Maratona do Rio.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921397/Short_Ipanema_bhg1pv.png",
-    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/short-ipanema-com-bolso?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-34",
-    "name": "Top Ahvic Ipanema",
-    "description": "Edição inspirada nas cores da Maratona do Rio.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758921396/Top_Ipanema_zr9uyr.png",
-    "affiliateLink": "https://www.ahvic.com.br/colecoes/colecao-maratona-do-rio/top-ipanema?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-35",
-    "name": "Short Ahvic Mari (cores)",
-    "description": "Para quem busca performance nos treinos de corrida.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925734/Short_Mari_Run_mfvmra.png",
-    "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-mari-run-drop?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-36",
-    "name": "Short Ahvic Mari",
-    "description": "Para quem busca performance nos treinos de corrida.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925752/Short_Mari_P%C3%BArpura_nolkgc.png",
-    "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-mari-run-drop-purpura?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-37",
-    "name": "Short Ahvic Tai",
-    "description": "Perfeita para quem busca liberdade, conforto e estilo.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925772/Short_Tai_drop_nm5r2d.png",
-    "affiliateLink": "https://www.ahvic.com.br/produtos/shorts/short-tai-drop?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-38",
-    "name": "Conjunto Ahvic Betina",
-    "description": "Aliado perfeito para sair do óbvio nos dias de treino.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758924673/Conjunto_Betina_Madder_Brown_r4qv9t.png",
-    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-betina-madder-brown?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-39",
-    "name": "Short Ahvic Venice",
-    "description": "Conforto e praticidade para as atividades físicas.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925234/Short_Venice_jxa7hs.png",
-    "affiliateLink": "https://www.ahvic.com.br/fitness/shorts/short-venice?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-40",
-    "name": "Top Ahvic Venice",
-    "description": "Conforto e praticidade para as atividades físicas.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925515/Top_Venice_voc0c2.png",
-    "affiliateLink": "https://www.ahvic.com.br/fitness/tops/top-venice?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-41",
-    "name": "Conjunto Ahvic Flow e Move",
-    "description": "Para acompanhar você em cada passo.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925233/Top_Flow_Short_Move_chocolate_f1wffx.png",
-    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-flow-e-short-move-chocolate?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-42",
-    "name": "Conjunto Ahvic Flow",
-    "description": "Para acompanhar você em cada passo.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925233/Conjunto_Flow_zoo0ef.png",
-    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-top-e-short-flow-azul-vortex?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-43",
-    "name": "Macaquinho Ahvic Lari",
-    "description": "A peça ideal para os seus treinos.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926277/Macaquinho_Lari_Run_Carmel_sua4m6.png",
-    "affiliateLink": "https://www.ahvic.com.br/conjuntos/macaquinho-lari-carmel?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-44",
-    "name": "Conjunto Ahvic Napa",
-    "description": "Equilíbrio perfeito entre sustentação e conforto.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926370/Conjunto_Napa_preto_bmhfdl.png",
-    "affiliateLink": "https://www.ahvic.com.br/conjuntos/conjunto-napa-preto?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-45",
-    "name": "Macaquinho Ahvic Camila",
-    "description": "Sofisticação com conforto ao seu treino.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926436/Macaquinho_Camila_qsy3ls.png",
-    "affiliateLink": "https://www.ahvic.com.br/produtos/conjuntos/macaquinho-camila?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-46",
-    "name": "Top Ahvic Flow",
-    "description": "Para acompanhar você em cada passo.",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1758926514/Top_Flow_branco_ca7qvt.png",
-    "affiliateLink": "https://www.ahvic.com.br/colecao-sprint-drop-ii/top-flow-drop-branco?parceiro=5913",
-    "category": "Roupas",
-    "discount": "10% OFF",
-    "coupon": "MARI"
-  },
-  {
-    "id": "prod-47",
-    "name": "Gel de limpeza facial Kesser All Clean",
-    "description": "",
-    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759169761/Gel_de_Limpeza_Facial_All_Clean_pw2t0l.webp",
-    "affiliateLink": "https://kesserstore.com.br/products/gel-de-limpeza-facial-all-clean",
-    "category": "Pele",
-    "coupon": "MARIBRAGANCA"
   }
 ];
 

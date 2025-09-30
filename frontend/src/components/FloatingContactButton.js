@@ -1,3 +1,4 @@
+// src/components/FloatingContactButton.js
 import React, { useEffect, useState } from "react";
 import { Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,20 +13,13 @@ const FloatingContactButton = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry.isIntersecting) {
-          setShowButton(false); // some quando AboutSection visível
-        } else {
-          setShowButton(true); // aparece de novo
-        }
+        setShowButton(!entry.isIntersecting); // some quando About visível
       },
       { threshold: 0.2 }
     );
 
     observer.observe(aboutSection);
-
-    return () => {
-      if (aboutSection) observer.unobserve(aboutSection);
-    };
+    return () => aboutSection && observer.unobserve(aboutSection);
   }, []);
 
   const subject = encodeURIComponent("Parceria com o Drop da Mari");
@@ -43,10 +37,19 @@ const FloatingContactButton = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.92 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="fixed bottom-6 right-6 flex items-center gap-2 bg-pink-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-pink-700 transition-colors z-50"
+          className="fixed bottom-6 right-6 flex items-center gap-2 
+                     bg-pink-600 text-white px-4 py-3 rounded-full 
+                     shadow-lg hover:bg-pink-700 transition-colors 
+                     z-50 select-none"
+          style={{ lineHeight: 1 }}
         >
-          <Mail size={20} />
-          <span className="font-medium">Parcerias</span>
+          <Mail size={18} className="shrink-0" />
+          <span
+            className="font-medium inline-block whitespace-nowrap"
+            style={{ fontSize: "0.95rem" }}
+          >
+            Parcerias
+          </span>
         </motion.a>
       )}
     </AnimatePresence>

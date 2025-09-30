@@ -21,10 +21,7 @@ const AboutSection = () => {
     let aboutVisible = false;
     let footerVisible = false;
 
-    const update = () => {
-      // Mobile: botão só aparece se About está visível E Footer não está
-      setShowMobileButton(aboutVisible && !footerVisible);
-    };
+    const update = () => setShowMobileButton(aboutVisible && !footerVisible);
 
     const aboutObs = new IntersectionObserver(
       (entries) => {
@@ -64,13 +61,13 @@ const AboutSection = () => {
       textAlign: "text-right",
       text: (
         <>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             Diferente do que muita gente imagina, eu não sou modelo nem vivo de publis. Além do Drop, sou proprietária da minha própria “EUpresa”. Trabalho como social media manager, profissão que me realiza, me dá base e estrutura para seguir com meus projetos pessoais. Inclusive, algumas das marcas que você vê aqui também confiam em mim nesse trabalho.
           </p>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             Tudo começou no Instagram, quando eu compartilhei a minha preparação para a primeira maratona. E foi ali que, sem planejar, uma comunidade nasceu. Mulheres reais, assim como eu, começaram a se identificar com a rotina, com as indicações sinceras, com o meu jeito de mostrar a vida sem filtros de perfeição.
           </p>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             O Drop nasceu como um espaço paralelo, da vontade de catalogar todas as recomendações, os produtos, os cupons. Pra que ninguém se perdesse no meio do caminho.
           </p>
         </>
@@ -85,13 +82,13 @@ const AboutSection = () => {
       textAlign: "text-left",
       text: (
         <>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             O Drop da Mari não é uma curadoria distante. Aqui você só encontra produtos que realmente fazem parte da minha vida, da minha rotina. São marcas que admiro, que acreditam no meu trabalho e fazem questão de caminhar junto, seja apoiando, trazendo novidades, ou confiando em mim para ser a ponte entre elas e vocês.
           </p>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             Mais do que descontos e vantagens, o que me motiva é essa comunidade que a gente construiu. Ter um espaço onde posso apoiar, inspirar e ser apoiada de volta me emociona de verdade.
           </p>
-          <p className="text-gray-600 mb-6 leading-relaxed">
+          <p>
             No fim, o Drop é isso: um lugar para compartilhar recomendações pessoais de forma transparente, prática e carinhosa, do jeito que eu vivo e acredito.
           </p>
         </>
@@ -100,21 +97,26 @@ const AboutSection = () => {
   ];
 
   const slide = slides[current];
-
-  const paginate = (dir) => {
-    setDirection(dir);
-    setCurrent((prev) => prev + dir);
-  };
-
+  const paginate = (dir) => { setDirection(dir); setCurrent((prev) => prev + dir); };
   const isLast = current === slides.length - 1;
 
   return (
-    <section id="sobre" className="py-16 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4 relative">
+    <section
+      id="sobre"
+      className="section-bridge relative overflow-visible"
+      style={{
+        /* Fundo sólido do About (rosa bebê) */
+        background: "hsl(var(--primary-baby))",
+        /* Bridge: de rosa bebê -> offwhite (para o Footer) */
+        "--this-bg": "hsl(var(--primary-baby))",
+        "--next-bg": "hsl(var(--offwhite))",
+      }}
+    >
+      <div className="bridge-content container mx-auto px-4 pt-6 pb-20 text-foreground">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2
-              className="text-4xl font-bold text-gray-800 mb-4"
+              className="text-3xl md:text-4xl font-bold mb-4 text-[hsl(0,0%,11%)]"
               style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
             >
               Sobre a Mari
@@ -129,20 +131,14 @@ const AboutSection = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="grid md:grid-cols-2 gap-12 items-stretch relative"
+              className="grid md:grid-cols-2 gap-10 items-stretch relative"
             >
               {/* Imagem + CTA */}
-              <div
-                className={`flex flex-col items-center justify-center text-center ${
-                  slide.reverse ? "md:order-2" : "md:order-1"
-                }`}
-              >
+              <div className={`flex flex-col items-center justify-center text-center ${slide.reverse ? "md:order-2" : "md:order-1"}`}>
                 <img
                   src={slide.image}
                   alt={slide.alt}
-                  className={`rounded-full shadow-lg object-cover select-none mb-6 ${
-                    slide.showInfo ? "w-48 h-48" : "w-64 h-64"
-                  }`}
+                  className={`rounded-full shadow-lg object-cover select-none mb-6 ${slide.showInfo ? "w-56 h-56" : "w-72 h-72"}`}
                   loading="lazy"
                   decoding="async"
                 />
@@ -150,27 +146,26 @@ const AboutSection = () => {
                 {slide.showInfo && (
                   <>
                     <h3
-                      className="text-2xl font-bold text-gray-800 mb-2"
+                      className="text-2xl font-bold mb-2 text-[hsl(0,0%,11%)]"
                       style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
                     >
                       Mariana Bragança
                     </h3>
-                    <p className="text-pink-500 font-medium mb-4">
+                    <p className="text-[hsl(var(--primary))] font-medium mb-4">
                       Apaixonada por corrida & bem-estar
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <a
                         href="https://instagram.com/marianabraganca_"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-medium shadow transition"
+                        target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white font-medium shadow transition"
                       >
                         <Instagram size={18} className="mr-2" />
                         Seguir no Instagram
                       </a>
                       <a
                         href={mailto}
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white font-medium shadow transition"
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-accent text-white font-medium shadow transition"
                       >
                         <Mail size={18} className="mr-2" />
                         Propor Parceria
@@ -180,20 +175,18 @@ const AboutSection = () => {
                 )}
               </div>
 
-              {/* Texto */}
-              <div
-                className={`prose prose-lg ${
-                  slide.reverse ? "md:order-1" : "md:order-2"
-                } ${slide.textAlign}`}
-              >
-                {slide.text}
+              {/* Texto (sem prose, com espaçamento controlado) */}
+              <div className={`${slide.reverse ? "md:order-1" : "md:order-2"} ${slide.textAlign}`}>
+                <div className="space-y-4 text-gray-600 text-base md:text-lg leading-relaxed">
+                  {slide.text}
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* MOBILE: botão flutuante (vazado), só dentro do About e some quando Footer entra */}
+      {/* MOBILE: botão flutuante (vazado) */}
       <AnimatePresence>
         {showMobileButton && (
           <motion.button
@@ -205,38 +198,34 @@ const AboutSection = () => {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="md:hidden fixed bottom-6 right-6 p-3 rounded-full z-40"
             aria-label={isLast ? "Anterior" : "Próximo"}
-            style={{
-              background: "transparent",
-              border: "none",
-              boxShadow: "0 0 10px rgba(0,0,0,0.25)",
-            }}
+            style={{ background: "transparent", border: "none", boxShadow: "0 0 10px rgba(0,0,0,0.25)" }}
           >
             {isLast ? (
-              <ChevronLeft className="w-7 h-7 text-pink-500" />
+              <ChevronLeft className="w-7 h-7 text-[hsl(var(--primary))]" />
             ) : (
-              <ChevronRight className="w-7 h-7 text-pink-500" />
+              <ChevronRight className="w-7 h-7 text-[hsl(var(--primary))]" />
             )}
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* DESKTOP: botões laterais inalterados */}
+      {/* DESKTOP: setas laterais */}
       {current > 0 && (
         <button
           onClick={() => paginate(-1)}
-          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-pink-100"
+          className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-muted"
           aria-label="Anterior"
         >
-          <ChevronLeft className="w-6 h-6 text-pink-500" />
+          <ChevronLeft className="w-6 h-6 text-[hsl(var(--primary))]" />
         </button>
       )}
       {current < slides.length - 1 && (
         <button
           onClick={() => paginate(1)}
-          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-pink-100"
+          className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-muted"
           aria-label="Próximo"
         >
-          <ChevronRight className="w-6 h-6 text-pink-500" />
+          <ChevronRight className="w-6 h-6 text-[hsl(var(--primary))]" />
         </button>
       )}
     </section>
