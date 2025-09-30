@@ -19,13 +19,7 @@ const Hero = () => {
         '--next-bg': 'hsl(var(--accent-baby))',
       }}
     >
-      <div className="bridge-content relative text-foreground overflow-visible">
-        <img
-          src="/assets/libelula.svg"
-          alt=""
-          className="absolute right-0 top-0 w-96 opacity-10 pointer-events-none select-none"
-        />
-        <div className="max-w-4xl mx-auto text-center px-4 pt-8 pb-16">
+              <div className="max-w-4xl mx-auto text-center px-4 pt-8 pb-16">
           <h2
             className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-6 text-[hsl(0,0%,11%)]"
             style={{ fontFamily: 'Sinerva, ui-sans-serif, system-ui' }}
