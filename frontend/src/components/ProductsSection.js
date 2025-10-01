@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import products from "../products";
 import ProductCard from "./ProductCard";
 
-const DESIRED_ORDER = ["Todos","Roupas","Acessórios","Suplementos","Cabelos","Pele","Outros"];
+const DESIRED_ORDER = ["Todos","Roupas","Acessórios","Suplementos","Cabelos","Pele"];
 
 const normalize = (str) =>
   (str ?? "")
@@ -18,9 +18,7 @@ const canonicalizeCategory = (raw) => {
   if (n === "suplemento" || n === "suplementos") return "Suplementos";
   if (n === "cabelo" || n === "cabelos") return "Cabelos";
   if (n === "pele") return "Pele";
-  if (n === "outro" || n === "outros") return "Outros";
-  if (DESIRED_ORDER.includes(raw)) return raw;
-  return "Outros";
+  return "Todos";
 };
 
 const ProductsSection = () => {
@@ -37,10 +35,27 @@ const ProductsSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const shuffledProducts = useMemo(() => [...products].sort(() => Math.random() - 0.5), []);
+  const shuffledProducts = useMemo(
+    () => [...products].sort(() => Math.random() - 0.5),
+    []
+  );
+
+  // Divide produtos normais e parceiros
+  const produtosNormais = useMemo(() => {
+    return shuffledProducts.filter(
+      (p) => canonicalizeCategory(p.category) !== "Todos" &&
+             normalize(p.category) !== "parceiros"
+    );
+  }, [shuffledProducts]);
+
+  const parceiros = useMemo(() => {
+    return shuffledProducts.filter(
+      (p) => normalize(p.category) === "parceiros"
+    );
+  }, [shuffledProducts]);
 
   const filteredProducts = useMemo(() => {
-    return shuffledProducts.filter((product) => {
+    return produtosNormais.filter((product) => {
       const catCanon = canonicalizeCategory(product.category);
       const matchesCategory = selectedCategory === "Todos" || catCanon === selectedCategory;
       const matchesSearch =
@@ -48,7 +63,7 @@ const ProductsSection = () => {
         normalize(product.description).includes(normalize(searchTerm));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchTerm, shuffledProducts]);
+  }, [selectedCategory, searchTerm, produtosNormais]);
 
   useEffect(() => {
     setActiveProductId(null);
@@ -56,27 +71,29 @@ const ProductsSection = () => {
   }, [searchTerm, selectedCategory, isMobile]);
 
   const countsByCat = useMemo(() => {
-    const counts = { Roupas: 0, Acessórios: 0, Suplementos: 0, Cabelos: 0, Pele: 0, Outros: 0 };
-    products.forEach((p) => {
+    const counts = { Roupas: 0, Acessórios: 0, Suplementos: 0, Cabelos: 0, Pele: 0 };
+    produtosNormais.forEach((p) => {
       const catCanon = canonicalizeCategory(p?.category);
       if (catCanon !== "Todos") counts[catCanon] = (counts[catCanon] || 0) + 1;
     });
     return counts;
-  }, []);
+  }, [produtosNormais]);
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   return (
     <section
-  id="products"
-  className="section-bridge"
-  style={{
-    background: 'hsl(var(--accent-baby))',
-    '--this-bg': 'hsl(var(--accent-baby))',
-    '--next-bg': 'hsl(var(--primary-baby))',
-  }}
->
-  <div className="bridge-content py-10 px-4 md:px-8 lg:px-16 text-foreground">
+      id="products"
+      className="section-bridge"
+      style={{
+        background: 'hsl(var(--accent-baby))',
+        '--this-bg': 'hsl(var(--accent-baby))',
+        '--next-bg': 'hsl(var(--primary-baby))',
+      }}
+    >
+      <div className="bridge-content pt-6 pb-16 px-4 md:px-8 lg:px-16 text-foreground">
+
+        {/* ---------------- Produtos ---------------- */}
         <h2
           className="text-3xl font-bold text-center mb-6 text-[hsl(0,0%,11%)]"
           style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
@@ -109,7 +126,11 @@ const ProductsSection = () => {
               >
                 <span>{cat}</span>
                 {cat !== "Todos" && (
-                  <span className={`ml-1 ${selected ? "text-primary-foreground" : "text-gray-500"} text-xs md:text-sm`}>
+                  <span
+                    className={`ml-1 ${
+                      selected ? "text-primary-foreground" : "text-gray-500"
+                    } text-xs md:text-sm`}
+                  >
                     ({countsByCat[cat] ?? 0})
                   </span>
                 )}
@@ -118,7 +139,7 @@ const ProductsSection = () => {
           })}
         </div>
 
-        {/* Grid */}
+        {/* Grid Produtos */}
         {visibleProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {visibleProducts.map((product) => (
@@ -146,6 +167,29 @@ const ProductsSection = () => {
             </button>
           </div>
         )}
+
+        {/* ---------------- Parceiros ---------------- */}
+        {parceiros.length > 0 && (
+          <>
+            <h2
+              className="text-3xl font-bold text-center my-10 text-[hsl(0,0%,11%)]"
+              style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
+            >
+              Profissionais Parceiros
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {parceiros.map((p) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  activeProductId={activeProductId}
+                  setActiveProductId={setActiveProductId}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
       </div>
     </section>
   );

@@ -202,10 +202,11 @@ const products = [
   {
     "id": "prod-21",
     "name": "Gel de limpeza facial Kesser All Clean",
-    "description": "",
+    "description": "Limpeza eficaz e delicada do rosto.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759169761/Gel_de_Limpeza_Facial_All_Clean_pw2t0l.webp",
     "affiliateLink": "https://kesserstore.com.br/products/gel-de-limpeza-facial-all-clean",
     "category": "Pele",
+    "discount": "10% OFF",
     "coupon": "MARIBRAGANCA"
   },
   {
@@ -467,6 +468,48 @@ const products = [
     "category": "Suplementos",
     "discount": "10% OFF",
     "coupon": "MARIANABRAGANCA"
+  },
+  {
+    "id": "prod-48",
+    "name": "Pipizito Funil Urinário Descartável",
+    "description": "Para evitar contato com banheiros sujos.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759321339/pipizito_grcs7r.webp",
+    "affiliateLink": "https://www.pipizito.com.br/collections/todos-produtos",
+    "category": "Acessórios",
+    "discount": "10% OFF",
+    "coupon": "MARIANA10"
+  },
+  {
+    "id": "prod-49",
+    "name": "Kayque Vizzoni - Personal Trainer",
+    "description": "Consultoria online por app.\r\nPlano bimestral com desconto exclusivo!",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759324606/kayquepersonal_fcxmmh.jpg",
+    "affiliateLink": "https://wa.me/5527996367339",
+    "category": "Parceiros"
+  },
+  {
+    "id": "prod-50",
+    "name": "Rodrigo - Treinador de Corrida",
+    "description": "Planilhas e acompanhamento online.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759354024/rodrigodmais_flmwzr.jpg",
+    "affiliateLink": "https://wa.me/5521981003551",
+    "category": "Parceiros"
+  },
+  {
+    "id": "prod-52",
+    "name": "Karol Coutinho - Fotógrafa",
+    "description": "Fotografia profissional de esportes.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759354406/karolfoto_l7kmwf.jpg",
+    "affiliateLink": "https://wa.me/5527988426617",
+    "category": "Parceiros"
+  },
+  {
+    "id": "prod-53",
+    "name": "Thiago Ferraz - Fisioterapeuta",
+    "description": "Para prevenção e recuperação de lesões.\r\nAvaliação e sessão com condições especiais!",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759356051/IMG_7672_jfbfgj.png",
+    "affiliateLink": "https://wa.me/5527999097151",
+    "category": "Parceiros"
   }
 ];
 

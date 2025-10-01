@@ -5,17 +5,45 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
 
   const isActive = activeProductId === product.id;
   const isDisabled = !!product.coupon && !isActive;
+  const isParceiro = product.category === "Parceiros";
+
+  // Mensagens personalizadas fixas por parceiro
+  const getPartnerMessage = (text = "") => {
+    const n = (text || "").toLowerCase();
+
+    if (n.includes("fisioterapeuta"))
+      return "Oi, Thiago! Encontrei seu contato pelo Drop da Mari 👋 e gostaria de mais informações sobre consultas.";
+
+    if (n.includes("personal"))
+      return "Oi, Kayque! Vi sua indicação no Drop da Mari 👋 e gostaria de conversar sobre treinos personalizados.";
+
+    if (n.includes("corrida"))
+      return "Oi, Rodrigo! Encontrei seu contato no Drop da Mari 👋 e quero saber mais sobre seus treinos de corrida.";
+
+    if (n.includes("nutricionista"))
+      return "Oi, Nathalia! Vi sua indicação no Drop da Mari 👋 e gostaria de mais informações sobre consultas.";
+
+    if (n.includes("fotografia") || n.includes("fotógrafo") || n.includes("fotografo"))
+      return "Oi, Karol! Encontrei seu contato pelo Drop da Mari 👋 e quero conversar sobre um ensaio fotográfico.";
+  };
 
   const handleBuyClick = () => {
-  if (window.gtag) {
-    window.gtag("event", "click_comprar", {
-      event_category: "E-commerce",
-      event_label: product.name,   // ou product.id se preferir
-      value: product.price || 0,   // opcional: envia preço se tiver
-    });
-  }
-  window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
-};
+    if (window.gtag) {
+      window.gtag("event", "click_comprar", {
+        event_category: "E-commerce",
+        event_label: product.name,
+        value: product.price || 0,
+      });
+    }
+
+    if (isParceiro) {
+      const msg = encodeURIComponent(getPartnerMessage(product.name + " " + product.description));
+      const url = `${product.affiliateLink}?text=${msg}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      window.open(product.affiliateLink, "_blank", "noopener,noreferrer");
+    }
+  };
 
   const handleCopyCoupon = async () => {
     try {
@@ -46,99 +74,80 @@ export default function ProductCard({ product, activeProductId, setActiveProduct
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
       {/* Imagem */}
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-64 object-cover"
+          className={`w-full ${isParceiro ? "h-40" : "h-52"} object-cover`}
           loading="lazy"
           decoding="async"
           onError={(e) => {
             e.currentTarget.src = "https://via.placeholder.com/640x400?text=Produto";
           }}
         />
-        {product.discount && (
-          <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+        {!isParceiro && product.discount && (
+          <div className="absolute top-3 right-3 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">
             {product.discount}
           </div>
         )}
       </div>
 
       {/* Conteúdo */}
-      <div className="p-6 flex flex-col h-full">
+      <div className="p-4 flex flex-col h-full">
         {product.category && (
-          <div className="text-pink-500 text-sm font-medium mb-2">
-            {product.category}
-          </div>
+          <div className="text-pink-500 text-xs font-medium mb-1">{product.category}</div>
         )}
 
-        <h3 className="text-xl font-bold text-gray-800 mb-3">{product.name}</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-2 leading-snug">{product.name}</h3>
 
         {product.description && (
-          <p className="text-gray-600 text-sm mb-4 leading-relaxed">{product.description}</p>
+          <p className="text-gray-600 text-sm mb-3 leading-snug">{product.description}</p>
         )}
 
         {/* Base fixa do card */}
-        <div className="mt-auto space-y-3">
-          {/* Cupom */}
-          {product.coupon ? (
-            <div className="bg-pink-50 border border-pink-200 rounded-lg p-3">
-              {/* min-w-0 permite truncar dentro do flex; gap evita encostar no botão */}
-              <div className="flex items-center justify-between min-w-0 gap-3">
-                {/* Esquerda: rótulo + cupom truncado */}
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-pink-600 font-medium">CUPOM EXCLUSIVO</p>
-                  <p
-                    className="text-lg font-bold text-pink-700 truncate"
-                    title={product.coupon}
-                    aria-label={`Cupom ${product.coupon}`}
+        <div className="mt-auto space-y-2">
+          {/* Cupom só aparece se não for Parceiro */}
+          {!isParceiro && (
+            product.coupon ? (
+              <div className="bg-pink-50 border border-pink-200 rounded-lg p-2">
+                <div className="flex items-center justify-between min-w-0 gap-2">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[10px] text-pink-600 font-medium">CUPOM EXCLUSIVO</p>
+                    <p
+                      className="text-base font-bold text-pink-700 truncate"
+                      title={product.coupon}
+                      aria-label={`Cupom ${product.coupon}`}
+                    >
+                      {product.coupon}
+                    </p>
+                  </div>
+
+                  <button
+                    id={`coupon-${product.id}`}
+                    type="button"
+                    onClick={handleCopyCoupon}
+                    className="shrink-0 bg-pink-100 hover:bg-pink-200 text-pink-700 px-2 py-0.5 rounded text-xs font-medium transition-colors"
                   >
-                    {product.coupon}
-                  </p>
+                    {copied ? "Copiado!" : "Copiar"}
+                  </button>
                 </div>
-
-                {/* Direita: Copiar (não encolhe) */}
-                <button
-                  id={`coupon-${product.id}`}
-                  type="button"
-                  onClick={handleCopyCoupon}
-                  className="shrink-0 bg-pink-100 hover:bg-pink-200 text-pink-700 px-3 py-1 rounded text-sm font-medium transition-colors"
-                >
-                  {copied ? "Copiado!" : "Copiar"}
-                </button>
               </div>
-            </div>
-          ) : (
-            <div className="text-sm text-gray-500">Oferta sem cupom</div>
+            ) : (
+              <div className="text-xs text-gray-500">Oferta sem cupom</div>
+            )
           )}
 
-          {/* Comprar */}
-          {isDisabled ? (
-            <div className="relative group">
-              <button
-                type="button"
-                aria-disabled="true"
-                onClick={guideToCopy}
-                onMouseEnter={handleBuyHover}
-                className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-gray-300 text-gray-500 cursor-pointer"
-              >
-                Comprar com Desconto
-              </button>
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform duration-200 bg-pink-600 text-white text-xs font-medium px-2 py-1 rounded shadow-lg whitespace-nowrap">
-                Copie o cupom!
-              </span>
-            </div>
-          ) : (
-            <button
-              type="button"
-              onClick={handleBuyClick}
-              className="w-full font-bold py-3 px-4 rounded-lg transition-all duration-200 transform shadow-lg bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-xl"
-            >
-              Comprar com Desconto
-            </button>
-          )}
+          {/* Botão principal */}
+          <button
+            type="button"
+            onClick={handleBuyClick}
+            onMouseEnter={handleBuyHover}
+            className="w-full font-bold py-2.5 px-4 rounded-lg transition-all duration-200 transform shadow-md bg-green-500 hover:bg-green-600 text-white hover:scale-105 hover:shadow-lg text-sm"
+          >
+            {isParceiro ? "Falar no WhatsApp" : "Comprar com Desconto"}
+          </button>
         </div>
       </div>
     </div>
