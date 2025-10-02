@@ -1,4 +1,5 @@
 import React from 'react';
+import AdBanner from './AdBanner';
 
 const Hero = () => {
   const scrollToProducts = () => {
@@ -30,9 +31,11 @@ const Hero = () => {
           className="text-3xl md:text-4xl font-bold tracking-tight leading-tight mb-6 text-[hsl(0,0%,11%)]"
           style={{ fontFamily: 'Sinerva' }}
         >
-          Drop da Mari
+          Produtos com Cupons Exclusivos
         </h2>
-        <div className="flex justify-center gap-4">
+
+        {/* Botões originais */}
+        <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={scrollToProducts}
             className="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-pink-600 text-white font-medium"
@@ -44,7 +47,7 @@ const Hero = () => {
             onClick={scrollToPartners}
             className="px-6 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-pink-600 text-white font-medium"
           >
-            Parceiros
+            Ver Parceiros
           </button>
 
           <button
@@ -53,6 +56,11 @@ const Hero = () => {
           >
             Sobre Mim
           </button>
+        </div>
+
+        {/* Banner agora faz parte do fluxo */}
+        <div className="flex justify-center">
+          <AdBanner />
         </div>
       </div>
     </section>

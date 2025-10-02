@@ -67,7 +67,7 @@ const ProductsSection = () => {
 
   useEffect(() => {
     setActiveProductId(null);
-    setVisibleCount(isMobile ? 5 : 8);
+    setVisibleCount(isMobile ? 4 : 8);
   }, [searchTerm, selectedCategory, isMobile]);
 
   const countsByCat = useMemo(() => {
