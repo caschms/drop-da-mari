@@ -168,67 +168,67 @@ const ProductsSection = () => {
           </div>
         )}
 
-{/* ---------------- Parceiros ---------------- */}
-{parceiros.length > 0 && (
-  <>
-    <h2
-      className="text-3xl font-bold text-center my-10 text-[hsl(0,0%,11%)]"
-      style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
-    >
-      Profissionais Parceiros
-    </h2>
+        {/* ---------------- Parceiros ---------------- */}
+        {parceiros.length > 0 && (
+          <div id="parceiros">
+            <h2
+              className="text-3xl font-bold text-center my-10 text-[hsl(0,0%,11%)]"
+              style={{ fontFamily: "Sinerva, ui-sans-serif, system-ui" }}
+            >
+              Profissionais Parceiros
+            </h2>
 
-    {/* Mobile: carrossel 1 por vez */}
-    <div className="block md:hidden relative">
-      {parceiros.length > 0 && (
-        <div className="flex items-center justify-center">
-          <button
-            onClick={() =>
-              setActiveProductId((prev) =>
-                prev === null || prev === 0 ? parceiros.length - 1 : prev - 1
-              )
-            }
-            className="absolute left-0 z-10 bg-white rounded-full shadow p-2"
-          >
-            ◀
-          </button>
+            {/* Mobile: carrossel 1 por vez */}
+            <div className="block md:hidden relative">
+              {parceiros.length > 0 && (
+                <div className="flex items-center justify-center">
+                  <button
+                    onClick={() =>
+                      setActiveProductId((prev) =>
+                        prev === null || prev === 0 ? parceiros.length - 1 : prev - 1
+                      )
+                    }
+                    className="absolute left-0 z-10 bg-white rounded-full shadow p-2"
+                  >
+                    ◀
+                  </button>
 
-          <div className="w-full max-w-xs">
-            <ProductCard
-              key={parceiros[activeProductId ?? 0].id}
-              product={parceiros[activeProductId ?? 0]}
-              activeProductId={activeProductId}
-              setActiveProductId={setActiveProductId}
-            />
+                  <div className="w-full max-w-xs">
+                    <ProductCard
+                      key={parceiros[activeProductId ?? 0].id}
+                      product={parceiros[activeProductId ?? 0]}
+                      activeProductId={activeProductId}
+                      setActiveProductId={setActiveProductId}
+                    />
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      setActiveProductId((prev) =>
+                        prev === null || prev === parceiros.length - 1 ? 0 : prev + 1
+                      )
+                    }
+                    className="absolute right-0 z-10 bg-white rounded-full shadow p-2"
+                  >
+                    ▶
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Desktop: grid normal 5 colunas */}
+            <div className="hidden md:grid grid-cols-5 gap-6">
+              {parceiros.map((p) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  activeProductId={activeProductId}
+                  setActiveProductId={setActiveProductId}
+                />
+              ))}
+            </div>
           </div>
-
-          <button
-            onClick={() =>
-              setActiveProductId((prev) =>
-                prev === null || prev === parceiros.length - 1 ? 0 : prev + 1
-              )
-            }
-            className="absolute right-0 z-10 bg-white rounded-full shadow p-2"
-          >
-            ▶
-          </button>
-        </div>
-      )}
-    </div>
-
-    {/* Desktop: grid normal 5 colunas */}
-    <div className="hidden md:grid grid-cols-5 gap-6">
-      {parceiros.map((p) => (
-        <ProductCard
-          key={p.id}
-          product={p}
-          activeProductId={activeProductId}
-          setActiveProductId={setActiveProductId}
-        />
-      ))}
-    </div>
-  </>
-)}
+        )}
       </div>
     </section>
   );
