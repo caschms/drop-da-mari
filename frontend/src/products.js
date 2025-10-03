@@ -489,10 +489,18 @@ const products = [
   },
   {
     "id": "prod-50",
-    "name": "Rodrigo - Treinador de Corrida",
+    "name": "Rodrigo João - Treinador de Corrida",
     "description": "Planilhas e acompanhamento online.",
     "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759354024/rodrigodmais_flmwzr.jpg",
     "affiliateLink": "https://wa.me/5521981003551",
+    "category": "Parceiros"
+  },
+  {
+    "id": "prod-51",
+    "name": "Nathalia Schaeffer - Nutricionista",
+    "description": "Nutrição esportiva.\r\nEmagrecimeto e saúde feminina.",
+    "image": "https://res.cloudinary.com/dupz0ffvs/image/upload/v1759492205/nathaliaschae-1_nkzzpq.png",
+    "affiliateLink": "https://wa.me/5527998886652",
     "category": "Parceiros"
   },
   {
