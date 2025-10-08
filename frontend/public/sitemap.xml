@@ -3,29 +3,45 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- Página inicial -->
+  <!-- 🌐 Página inicial -->
   <url>
     <loc>https://dropdamari.com/</loc>
     <priority>1.0</priority>
     <lastmod>2025-10-08</lastmod>
     <image:image>
       <image:loc>https://dropdamari.com/favicon.png</image:loc>
-      <image:title>Favicon do Drop da Mari</image:title>
+      <image:title>Logo e Favicon do Drop da Mari</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dupz0ffvs/image/upload/v1758919765/ironman_bra_wybvu5.webp</image:loc>
+      <image:title>Produto destaque Drop da Mari - Óculos Yopp Ironman Brasil</image:title>
     </image:image>
   </url>
 
-  <!-- Seção Produtos -->
+  <!-- 🛍️ Seção Produtos -->
   <url>
     <loc>https://dropdamari.com/#products</loc>
     <priority>0.8</priority>
     <lastmod>2025-10-08</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dupz0ffvs/image/upload/v1758925752/Short_Mari_P%C3%BArpura_nolkgc.png</image:loc>
+      <image:title>Short Ahvic Mari - Produto exclusivo Drop da Mari</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dupz0ffvs/image/upload/v1758916972/Gloss_x9vorl.webp</image:loc>
+      <image:title>Gloss Capilar Ervas Naturais - Seleção Drop da Mari</image:title>
+    </image:image>
   </url>
 
-  <!-- Seção Sobre -->
+  <!-- 👩‍🦰 Seção Sobre -->
   <url>
     <loc>https://dropdamari.com/#sobre</loc>
     <priority>0.8</priority>
     <lastmod>2025-10-08</lastmod>
+    <image:image>
+      <image:loc>https://res.cloudinary.com/dupz0ffvs/image/upload/v1758832450/About_Mariana_oruxqw.jpg</image:loc>
+      <image:title>Mariana Bragança - Fundadora do Drop da Mari</image:title>
+    </image:image>
   </url>
 
 </urlset>
